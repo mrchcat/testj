@@ -28,8 +28,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 withKubeConfig([credentialsId: 'KUBER_CONGIG_YAML']) {
-                      sh 'kubectl get pods'
-//                    sh 'helm install testj ./helm/testj'
+//                       sh 'kubectl get pods'
+                   sh 'helm install testj ./helm/testj'
                 }
 //                    sh 'kubectl config view --raw > C:/Users/User/.kube/config'
 //                    sh 'helm install testj ./helm/testj'
