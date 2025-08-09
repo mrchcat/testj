@@ -7,24 +7,24 @@ pipeline {
         }
 
     stages {
-        stage('Build & Unit Tests') {
-            steps {
-              sh 'mvn clean package'
-            }
-        }
-        stage('Build Docker Images') {
-            steps {
-                sh 'docker build . -t $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
-            }
-        }
-        stage('Push Docker Images') {
-            steps {
-                withCredentials([string(credentialsId: 'DOCKER', variable: 'TOKEN')]) {
-                    sh 'echo $TOKEN | docker login --username $DOCKER_REGISTRY --password-stdin'
-                    sh 'docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
-                }
-            }
-        }
+//         stage('Build & Unit Tests') {
+//             steps {
+//               sh 'mvn clean package'
+//             }
+//         }
+//         stage('Build Docker Images') {
+//             steps {
+//                 sh 'docker build . -t $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
+//             }
+//         }
+//         stage('Push Docker Images') {
+//             steps {
+//                 withCredentials([string(credentialsId: 'DOCKER', variable: 'TOKEN')]) {
+//                     sh 'echo $TOKEN | docker login --username $DOCKER_REGISTRY --password-stdin'
+//                     sh 'docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
+//                 }
+//             }
+//         }
         stage('Deploy') {
             steps {
 //                 withKubeConfig([credentialsId: 'KUBER_CONFIG', serverUrl: 'localhost:8080']) {
@@ -35,7 +35,7 @@ pipeline {
 //                    sh 'helm install testj ./helm/testj'
 //                       sh 'kubectl'
 //                       sh 'minikube ip'
-                   C:/Users/User/IdeaProjects/JenkinsTest/deploy.sh
+                   sh '~/IdeaProjects/JenkinsTest/deploy.sh'
             }
         }
     }
