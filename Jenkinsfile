@@ -3,7 +3,7 @@ pipeline {
         environment {
             DOCKER_REGISTRY='mcat1980'
             APP_NAME='testj'
-            BUILD_NUMBER='2.0'
+            BUILD_NUMBER='3.0'
         }
 
     stages {
@@ -30,8 +30,8 @@ pipeline {
                 sh 'echo $BUILD_NUMBER'
 
                 sh """
-                   docker build . -t $DOCKER_REGISTRY/$APP_NAME:$IMAGE_TAG
-                   docker push $DOCKER_REGISTRY/$APP_NAME:$IMAGE_TAG
+                   docker build . -t $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER
+                   docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER  --all-tags
                    """
             }
         }
