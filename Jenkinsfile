@@ -3,7 +3,7 @@ pipeline {
         environment {
             DOCKER_REGISTRY='mcat1980'
             APP_NAME='testj'
-            BUILD_NUMBER='4.0'
+            BUILD_NUMBER='5.0'
         }
 
     stages {
@@ -19,16 +19,13 @@ pipeline {
 //         }
         stage('Push Docker Images') {
             steps {
-                   sh 'echo dckr_pat_KfJQlpmEAHL_9ccoc5ghNPrvzew | docker login --username mcat1980 --password-stdin'
-                   sh 'docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
+//                    sh 'echo dckr_pat_KfJQlpmEAHL_9ccoc5ghNPrvzew | docker login --username $DOCKER_REGISTRY --password-stdin'
+//                    sh 'docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
 
-//                 withCredentials([string(credentialsId: 'DockerHub', variable: 'DockerHub')]) {
-//                     sh 'docker login -u mcat1980'
-//                     sh 'docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
-//                 }
-//                 withDockerRegistry([ credentialsId: "DockerHub", url: "" ]) {
-//                     sh 'docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
-//                 }
+                withCredentials([string(credentialsId: 'DockerHub', variable: 'DOCKER_TOKEN')]) {
+                    sh 'echo $DOCKER_TOKEN | docker login --username $DOCKER_REGISTRY --password-stdin'
+                    sh 'docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
+                }
             }
         }
     }
