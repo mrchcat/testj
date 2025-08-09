@@ -9,8 +9,8 @@ pipeline {
     stages {
         stage('Build & Unit Tests') {
             steps {
-              echo 'загрузка переменных окружения'
-              withEnv(readFile('.env').split('\n') as List) {
+              script {
+                readProperties(file: ".env").each {key, value -> env[key] = value }
               }
               echo $DOCKER_REGISTRY
               echo $APP_NAME
