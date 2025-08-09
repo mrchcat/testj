@@ -27,7 +27,9 @@ pipeline {
 //         }
         stage('Deploy') {
             steps {
-                sh 'helm install testj ./helm/testj'
+                withKubeConfig([credentialsId: 'KUBER_CONFIG', serverUrl: 'localhost:8080']) {
+                   sh 'helm install testj ./helm/testj'
+                }
             }
         }
     }
