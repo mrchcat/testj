@@ -33,7 +33,8 @@ pipeline {
 //                 }
 //                    sh 'kubectl config view --raw > C:/Users/User/.kube/config'
 //                    sh 'helm install testj ./helm/testj'
-                      sh 'kubectl get pods'
+                      sh 'kubectl'
+                      sh 'minikube ip'
             }
         }
     }
