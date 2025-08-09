@@ -22,8 +22,8 @@ pipeline {
 //                    sh 'echo dckr_pat_KfJQlpmEAHL_9ccoc5ghNPrvzew | docker login --username $DOCKER_REGISTRY --password-stdin'
 //                    sh 'docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
 
-                withCredentials([string(credentialsId: '1e257bb9-8e49-41ee-9e96-5ae5f235a4af', variable: 'DOCKER_TOKEN')]) {
-                    sh 'echo $DOCKER_TOKEN | docker login --username $DOCKER_REGISTRY --password-stdin'
+                withCredentials([string(credentialsId: 'DOCKER', variable: 'TOKEN')]) {
+                    sh 'echo $TOKEN | docker login --username $DOCKER_REGISTRY --password-stdin'
                     sh 'docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER'
                 }
             }
