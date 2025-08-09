@@ -1,17 +1,14 @@
 pipeline {
     agent any
         environment {
-            DOCKER_REGISTRY= "${env.DOCKER_REGISTRY}"
-            APP_NAME= "${env.APP_NAME}"
-            IMAGE_TAG= "${env.BUILD_NUMBER}"
+            DOCKER_REGISTRY="mcat1980"
+            APP_NAME="testj"
+            BUILD_NUMBER="2.0"
         }
 
     stages {
         stage('Build & Unit Tests') {
             steps {
-              script {
-                readProperties(file: ".env").each {key, value -> env[key] = value }
-              }
               echo $DOCKER_REGISTRY
               echo $APP_NAME
               echo $IMAGE_TAG
