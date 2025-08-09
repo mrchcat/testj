@@ -5,7 +5,7 @@ pipeline {
         stage('Build & Unit Tests') {
             steps {
               echo 'test'
-              sh './mvnw clean package'
+              sh 'mvn clean package'
             }
         }
     }
