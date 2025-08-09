@@ -3,7 +3,7 @@ pipeline {
         environment {
             DOCKER_REGISTRY='mcat1980'
             APP_NAME='testj'
-            BUILD_NUMBER='3.0'
+            BUILD_NUMBER='4.0'
         }
 
     stages {
@@ -31,7 +31,7 @@ pipeline {
 
                 sh """
                    docker build . -t $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER
-                   docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER  --all-tags
+                   docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER
                    """
             }
         }
