@@ -3,8 +3,10 @@ pipeline {
 
     stages {
         stage('Build & Unit Tests') {
-          echo test
+          steps {
+            echo test
 //           sh "./mvnw clean package"
+          }
         }
 //
 //         stage('Build Docker Images') {
