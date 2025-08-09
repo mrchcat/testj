@@ -14,8 +14,9 @@ pipeline {
 //                     echo $APP_NAME
 //                     echo $IMAGE_TAG
 //                   }
-                    withEnv(['VAR1=VALUE ONE',"VAR2=${someGroovyVar}"]) {
+                    withEnv(['VAR1=VALUE ONE','VAR2=VALUE ONE']) {
                         echo $VAR1
+                        echo $VAR2
                     }
             }
         }
