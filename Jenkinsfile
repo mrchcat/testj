@@ -1,14 +1,15 @@
 pipeline {
     agent any
-        environment {
-            DOCKER_REGISTRY="mcat1980"
-            APP_NAME="testj"
-            BUILD_NUMBER="2.0"
-        }
+//         environment {
+//             DOCKER_REGISTRY='mcat1980'
+//             APP_NAME='testj'
+//             BUILD_NUMBER='2.0'
+//         }
 
     stages {
         stage('Build & Unit Tests') {
             steps {
+              withEnv(['DOCKER_REGISTRY=mcat1980','APP_NAME=testj','BUILD_NUMBER=2.0']) {
               echo $DOCKER_REGISTRY
               echo $APP_NAME
               echo $IMAGE_TAG
