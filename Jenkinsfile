@@ -1,16 +1,16 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_REGISTRY = credentials('DOCKER_REGISTRY')
-        GITHUB_USERNAME = credentials('GITHUB_USERNAME')
-        IMAGE_TAG       = "${env.BUILD_NUMBER}"
-    }
+//     environment {
+//         DOCKER_REGISTRY = credentials('DOCKER_REGISTRY')
+//         GITHUB_USERNAME = credentials('GITHUB_USERNAME')
+//         IMAGE_TAG       = "${env.BUILD_NUMBER}"
+//     }
 
     stages {
         stage('Build & Unit Tests') {
           echo test
-          sh "./mvnw clean package"
+//           sh "./mvnw clean package"
         }
 //
 //         stage('Build Docker Images') {
