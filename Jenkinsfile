@@ -5,6 +5,9 @@ pipeline {
 //             APP_NAME='testj'
 //             BUILD_NUMBER='2.0'
 //         }
+    environment {
+        var1 = 'clang'
+    }
 
     stages {
         stage('Build & Unit Tests') {
@@ -14,10 +17,7 @@ pipeline {
 //                     echo $APP_NAME
 //                     echo $IMAGE_TAG
 //                   }
-                    withEnv(['VAR1=VALUE ONE','VAR2=VALUE ONE']) {
-                        echo $VAR1
-                        echo $VAR2
-                    }
+                    sh 'echo $var1'
             }
         }
 //         stage('Build & Unit Tests') {
