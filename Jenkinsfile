@@ -27,15 +27,15 @@ pipeline {
 //         }
         stage('Deploy') {
             steps {
-//                 withKubeConfig([credentialsId: 'KUBER_CONFIG', serverUrl: 'localhost:8080']) {
-//                    sh 'kubectl config view --raw > C:/Users/User/.kube/config'
+                withKubeConfig([credentialsId: 'KUBER_CONGIG_YAML']) {
+                      sh 'kubectl het pods'
 //                    sh 'helm install testj ./helm/testj'
-//                 }
+                }
 //                    sh 'kubectl config view --raw > C:/Users/User/.kube/config'
 //                    sh 'helm install testj ./helm/testj'
 //                       sh 'kubectl'
 //                       sh 'minikube ip'
-                   sh '~/IdeaProjects/JenkinsTest/deploy.sh'
+//                    sh '~/IdeaProjects/JenkinsTest/deploy.sh'
             }
         }
     }
