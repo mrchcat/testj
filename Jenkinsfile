@@ -25,10 +25,6 @@ pipeline {
 //         }
         stage('Build Docker Images and Push') {
             steps {
-                sh 'echo $DOCKER_REGISTRY'
-                sh 'echo $APP_NAME'
-                sh 'echo $BUILD_NUMBER'
-
                 sh """
                    docker build . -t $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER
                    docker push $DOCKER_REGISTRY/$APP_NAME:$BUILD_NUMBER
