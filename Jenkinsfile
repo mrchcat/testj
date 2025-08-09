@@ -27,10 +27,11 @@ pipeline {
 //         }
         stage('Deploy') {
             steps {
-                withKubeConfig([credentialsId: 'KUBER_CONFIG', serverUrl: 'localhost:8080']) {
-                   sh 'kubectl config view --raw > C:/Users/User/.kube/config'
+//                 withKubeConfig([credentialsId: 'KUBER_CONFIG', serverUrl: 'localhost:8080']) {
+//                    sh 'kubectl config view --raw > C:/Users/User/.kube/config'
+//                    sh 'helm install testj ./helm/testj'
+//                 }
                    sh 'helm install testj ./helm/testj'
-                }
             }
         }
     }
